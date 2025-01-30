@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
@@ -9,6 +9,20 @@ import confetti from "canvas-confetti"
 import { getFearData } from "@/lib/fearData"
 
 export default function Gameplay() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gradient-to-b from-green-100 to-green-200 flex items-center justify-center">
+          Loading...
+        </div>
+      }
+    >
+      <GameplayContent />
+    </Suspense>
+  )
+}
+
+function GameplayContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [currentLevel, setCurrentLevel] = useState(0)
