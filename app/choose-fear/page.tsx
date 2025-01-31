@@ -29,18 +29,18 @@ export default function ChooseFear() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-100 to-green-200 flex flex-col items-center justify-center p-4">
-      <h1 className="text-3xl font-bold text-green-600 mb-10">Choose Your Fear</h1>
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
+      <h1 className="text-3xl font-bold text-[#0d3c26] mb-10">Choose Your Fear</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8 max-w-4xl">
         {fears.map((fear) => (
           <Card
             key={fear.id}
-            className={`cursor-pointer transition-all ${selectedFear === fear.id ? "ring-2 ring-green-500" : ""}`}
+            className={`cursor-pointer transition-all ${selectedFear === fear.id ? "ring-2 ring-[#0d3c26]" : ""}`}
             onClick={() => handleSelectFear(fear.id)}
           >
             <CardHeader className="text-center">
               <CardTitle className="text-4xl mb-2">{fear.emoji}</CardTitle>
-              <CardTitle>{fear.name}</CardTitle>
+              <CardTitle className="text-[#0d3c26]">{fear.name}</CardTitle>
             </CardHeader>
           </Card>
         ))}
@@ -48,7 +48,7 @@ export default function ChooseFear() {
       <Button
         onClick={handleStartGame}
         disabled={!selectedFear}
-        className="w-48 h-12 text-lg bg-green-600 hover:bg-green-700"
+        className="w-48 h-12 text-lg bg-[#0d3c26] hover:bg-[#0d3c26]/90"
       >
         Start Challenge
       </Button>

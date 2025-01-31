@@ -26,7 +26,7 @@ function GameplayContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [currentLevel, setCurrentLevel] = useState(0)
-  const [fearMeter, setFearMeter] = useState(100)
+  const [fearMeter, setFearMeter] = useState(50) // Update 1: Changed initial fearMeter to 50
   const [feedback, setFeedback] = useState("")
   const [fear, setFear] = useState<any>(null)
   const [showCongrats, setShowCongrats] = useState(false)
@@ -114,8 +114,11 @@ function GameplayContent() {
   const currentLevelData = fear.levels[currentLevel]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-100 to-green-200 flex flex-col items-center justify-center p-4">
-      <h1 className="text-4xl font-bold text-green-600 mb-6">{fear.name} Challenge</h1>
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
+      {" "}
+      {/* Update 2: Changed background color */}
+      <h1 className="text-4xl font-bold text-[#0d3c26] mb-6">{fear.name} Challenge</h1>{" "}
+      {/* Update 2: Changed text color */}
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">
           Level {currentLevel + 1}: {currentLevelData.difficulty}
@@ -146,7 +149,6 @@ function GameplayContent() {
         </div>
         {feedback && <p className="text-green-600 mb-4">{feedback}</p>}
       </div>
-
       <Dialog open={showFailure} onOpenChange={setShowFailure}>
         <DialogContent>
           <DialogHeader>
@@ -158,7 +160,6 @@ function GameplayContent() {
           <Button onClick={handleRetry}>Try Again</Button>
         </DialogContent>
       </Dialog>
-
       <Dialog open={showLevelComplete} onOpenChange={setShowLevelComplete}>
         <DialogContent>
           <DialogHeader>
@@ -172,7 +173,6 @@ function GameplayContent() {
           </Button>
         </DialogContent>
       </Dialog>
-
       <Dialog open={showCongrats} onOpenChange={setShowCongrats}>
         <DialogContent>
           <DialogHeader>
